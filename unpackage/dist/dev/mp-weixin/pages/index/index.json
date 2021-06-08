@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "扇形轮播图",
+  "usingComponents": {
+    "sectors": "/components/sectors/sectors"
+  }
+}
