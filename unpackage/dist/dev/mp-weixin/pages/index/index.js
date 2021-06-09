@@ -102,8 +102,8 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    sectors: function() {
-      return __webpack_require__.e(/*! import() | components/sectors/sectors */ "components/sectors/sectors").then(__webpack_require__.bind(null, /*! @/components/sectors/sectors.vue */ 19))
+    siucatSectors: function() {
+      return __webpack_require__.e(/*! import() | components/siucat-sectors/siucat-sectors */ "components/siucat-sectors/siucat-sectors").then(__webpack_require__.bind(null, /*! @/components/siucat-sectors/siucat-sectors.vue */ 19))
     }
   }
 } catch (e) {
@@ -258,7 +258,7 @@ var _default =
       index: 0 };
 
   },
-  onLoad: function onLoad() {var _this = this;
+  created: function created() {var _this = this;
     this.$nextTick(function () {
       _this.$refs.sectors.add(_this.datalist);
     });

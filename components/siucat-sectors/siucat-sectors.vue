@@ -1,36 +1,35 @@
 <template>
 		<view class="turntable" @touchstart='Start' @touchmove='Move' @touchend='Chend' v-if="datalist.length>0">
 			<view class="turntable-content" :style='{height:`${40* datalist.length}rpx`,transform: `rotateZ(${turnZ}deg)`,transition}'>
-		
-			<view class="turntable-item" 
-			v-for="(item,index) in datalist" 
-			:style="{
-				zIndex:`${index > (datalist.length-zIndex) && 
-					(index-(datalist.length-zIndex+1))%zIndex <= 11  ?
-					 zList[(index-(datalist.length-zIndex+1))%zIndex] || -1 :
-					 zList[index+zIndex-1] || -1}`,
-				transform:`rotate(${index*10}deg) translate3d(-50%, 0px, 0px)`
-			}" :key='index'>
-				<view class="ar-floor__sku-item" 
+				<view class="turntable-item" 
+				v-for="(item,index) in datalist" 
 				:style="{
-					transform: `scale(${index > (datalist.length-zIndex) && 
-					(index-(datalist.length-zIndex+1))%zIndex <= 11  ?
-					(50-zList[(index-(datalist.length-zIndex+1))%zIndex])>=0?
-					1-(50-zList[(index-(datalist.length-zIndex+1))%zIndex])*scale : 1
-					 :
-					(50-zList[index+zIndex-1])>=0 ? 
-					1-(50-zList[index+zIndex-1])*scale : 
-					1})`,transition: `transform 0.2s ease-out 0s`}">
-					<view class="taro-img">
-						<image class="taro-img__mode-widthfix" :src="item.image" mode="aspectFill"></image>
-					</view>
-					<view class="jo-price">
-						<text class="taro-text jo-price__yen">¥</text>
-						<text class="taro-text jo-price__text--big">{{item.price.slice(0,2)}}</text>
-						<text class="taro-text jo-price__text--small">{{item.price.slice(2)}}</text>
+					zIndex:`${index > (datalist.length-zIndex) && 
+						(index-(datalist.length-zIndex+1))%zIndex <= 11  ?
+						 zList[(index-(datalist.length-zIndex+1))%zIndex] || -1 :
+						 zList[index+zIndex-1] || -1}`,
+					transform:`rotate(${index*10}deg) translate3d(-50%, 0px, 0px)`
+				}" :key='index'>
+					<view class="ar-floor__sku-item" 
+					:style="{
+						transform: `scale(${index > (datalist.length-zIndex) && 
+						(index-(datalist.length-zIndex+1))%zIndex <= 11  ?
+						(50-zList[(index-(datalist.length-zIndex+1))%zIndex])>=0?
+						1-(50-zList[(index-(datalist.length-zIndex+1))%zIndex])*scale : 1
+						 :
+						(50-zList[index+zIndex-1])>=0 ? 
+						1-(50-zList[index+zIndex-1])*scale : 
+						1})`,transition: `transform 0.2s ease-out 0s`}">
+						<view class="taro-img">
+							<image class="taro-img__mode-widthfix" :src="item.image" mode="aspectFill"></image>
+						</view>
+						<view class="jo-price">
+							<text class="taro-text jo-price__yen">¥</text>
+							<text class="taro-text jo-price__text--big">{{item.price.slice(0,2)}}</text>
+							<text class="taro-text jo-price__text--small">{{item.price.slice(2)}}</text>
+						</view>
 					</view>
 				</view>
-			</view>
 		</view>
 		</view>
 </template>
@@ -67,6 +66,7 @@
 			},
 			//滑动
 			Move(e){
+				
 				this.startClientX = this.moveClientX;
 				this.moveClientX = e.changedTouches[0].pageX;
 				this.differenceClientX = this.moveClientX - this.startClientX;
@@ -120,6 +120,9 @@
 				this.transition = `transform 0.2s ease-out 0s`
 				this.turnZ = this.integer
 				this.taroimg  = Math.abs(this.integer) / 10 % 36;
+				if(this.integer > 0){
+					this.taroimg = 36 - this.taroimg
+				}
 				this.$emit('Chend',this.taroimg)
 			},
 			//计算长度自动补全、截取
@@ -136,7 +139,7 @@
 				}else{
 					return arr.splice(0,36)
 				}
-			}
+			},
 		}
 	}
 </script>

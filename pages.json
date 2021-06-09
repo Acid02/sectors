@@ -6,9 +6,11 @@
 				"navigationBarTitleText": "扇形轮播图"
 			}
 		}
-	],
+    ],
 	"globalStyle": {
-		// "navigationStyle": "custom",
+		"h5":{
+			"navigationStyle": "custom"
+		},
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "sectors",
 		"navigationBarBackgroundColor": "#F8F8F8",

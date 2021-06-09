@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "扇形轮播图",
   "usingComponents": {
-    "sectors": "/components/sectors/sectors"
+    "siucat-sectors": "/components/siucat-sectors/siucat-sectors"
   }
 }

@@ -73,6 +73,11 @@
         "domain" : "https://www.acid.com",
         "router" : {
             "base" : "/sectors/"
-        }
+        },
+		"optimization" : {
+		    "treeShaking" : {
+		        "enable" : true
+		    }
+		}
     }
 }

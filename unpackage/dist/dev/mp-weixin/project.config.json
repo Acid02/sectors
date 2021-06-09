@@ -8,19 +8,23 @@
   },
   "compileType": "miniprogram",
   "libVersion": "",
-  "appid": "wx1b023b47346b56df",
+  "appid": "touristappid",
   "projectname": "sectors",
   "condition": {
     "search": {
+      "current": -1,
       "list": []
     },
     "conversation": {
+      "current": -1,
       "list": []
     },
     "game": {
+      "current": -1,
       "list": []
     },
     "miniprogram": {
+      "current": -1,
       "list": []
     }
   }
