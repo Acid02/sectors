@@ -4,22 +4,12 @@
 				<view class="turntable-item" 
 				v-for="(item,index) in datalist" 
 				:style="{
-					zIndex:`${index > (datalist.length-zIndex) && 
-						(index-(datalist.length-zIndex+1))%zIndex <= 11  ?
-						 zList[(index-(datalist.length-zIndex+1))%zIndex] || -1 :
-						 zList[index+zIndex-1] || -1}`,
+					zIndex:`${subIndex(index)}`,
 					transform:`rotate(${index*10}deg) translate3d(-50%, 0px, 0px)`
 				}" :key='index'>
 					<view class="ar-floor__sku-item" 
 					:style="{
-						transform: `scale(${index > (datalist.length-zIndex) && 
-						(index-(datalist.length-zIndex+1))%zIndex <= 11  ?
-						(50-zList[(index-(datalist.length-zIndex+1))%zIndex])>=0?
-						1-(50-zList[(index-(datalist.length-zIndex+1))%zIndex])*scale : 1
-						 :
-						(50-zList[index+zIndex-1])>=0 ? 
-						1-(50-zList[index+zIndex-1])*scale : 
-						1})`,transition: `transform 0.2s ease-out 0s`}">
+						transform: `scale(${subScale(index)})`,transition: `transform 0.2s ease-out 0s`}">
 						<view class="taro-img">
 							<image class="taro-img__mode-widthfix" :src="item.image" mode="aspectFill"></image>
 						</view>
@@ -52,6 +42,36 @@
 				scale:0.0618,
 				
 				taroimg:0,
+			}
+		},
+		computed:{
+			subIndex(){
+				return (index)=>{
+					let { datalist,zIndex,zList } = this;
+					if(index > (datalist.length-zIndex) && (index-(datalist.length-zIndex+1))%zIndex <= 11){
+						return zList[(index-(datalist.length-zIndex+1))%zIndex]
+					}else{
+						return zList[index+zIndex-1] || -1
+					}
+				}
+			},
+			subScale(){
+				return (index)=>{
+					let { datalist,zIndex,zList,scale } = this;
+					if(index > (datalist.length-zIndex) && (index-(datalist.length-zIndex+1))%zIndex <= 11){
+						if((50-zList[(index-(datalist.length-zIndex+1))%zIndex])>=0){
+							return 1-(50-zList[(index-(datalist.length-zIndex+1))%zIndex])*scale;
+						}else{
+							return 1
+						}
+					}else{
+						if((50-zList[index+zIndex-1])>=0){
+							return 1-(50-zList[index+zIndex-1])*scale
+						}else{
+							return 1
+						}
+					}
+				}
 			}
 		},
 		methods: {

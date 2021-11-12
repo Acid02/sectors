@@ -111,7 +111,7 @@
 	margin-bottom: 35.3282rpx;
 }
 .ar-floor__content-sku-img>image{
-	width: 100%;
+	height: 100%;
 }
 .ar-floor__content-sku-info{
 	position: relative;
