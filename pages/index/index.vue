@@ -1,5 +1,6 @@
 <template>
 	<view class="ar-floor">
+		<navigator url="../indexs/indexs">11</navigator>
 		<view class="z-title" title="限量稀缺"></view>
 		<view class="ar-floor__wrapper">
 			<!-- 背景层 -->

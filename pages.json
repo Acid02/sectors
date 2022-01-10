@@ -6,6 +6,15 @@
 				"navigationBarTitleText": "扇形轮播图"
 			}
 		}
+        ,{
+            "path" : "pages/indexs/indexs",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"h5":{
